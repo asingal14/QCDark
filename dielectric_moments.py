@@ -79,7 +79,7 @@ class atomic_orbital(object):
           # self.norm is a list of length equal to number primitives
           # normalize primitives first (PGBFs)
                self.norm = np.sqrt(np.power(2,2*(l+m+n)+1.5)*
-                         np.power(self.exps,l+m+n+1.5)/
+                         np.power(self.exponents,l+m+n+1.5)/
                          fact2(2*l-1)/fact2(2*m-1)/
                          fact2(2*n-1)/np.power(np.pi,1.5))
                     # now normalize the contracted basis functions (CGBFs)
@@ -88,16 +88,16 @@ class atomic_orbital(object):
                     fact2(2*l - 1)*fact2(2*m - 1)*fact2(2*n - 1)/np.power(2.0,L)
 
                N = 0.0
-               num_exps = len(self.exps)
+               num_exps = len(self.exponents)
                for ia in range(num_exps):
                     for ib in range(num_exps):
-                    N += self.norm[ia]*self.norm[ib]*self.coefs[ia]*self.coefs[ib]/\
-                              np.power(self.exps[ia] + self.exps[ib],L+1.5)
+                         N += self.norm[ia]*self.norm[ib]*self.coefficients[ia]*self.coefficients[ib]/\
+                              np.power(self.exponents[ia] + self.exponents[ib],L+1.5)
 
                N *= prefactor
                N = np.power(N,-0.5)
                for ia in range(num_exps):
-                    self.coefs[ia] *= N
+                    self.coefficients[ia] *= N
           else:
                self.norm = np.sqrt(np.power(2, L + 2.5)*
                                    np.power(self.exps, L + 1.5)/
