@@ -164,4 +164,4 @@ def sum_rule(form_factor, averaging = None):
      return qarr/BohrInv2eV, rates
 
 def sum_rule_bound(form_factor):
-     return 24.*(np.pi**2)*alpha/mElectron/form_factor.VCell
+     return 16.*(np.pi**2)*alpha/mElectron/form_factor.VCell
